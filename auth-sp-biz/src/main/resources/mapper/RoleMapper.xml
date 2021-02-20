@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nvxclouds.auth.biz.mapper.RoleMapper">
+
+    <select id="selectRoleByPage" resultType="com.nvxclouds.auth.biz.vo.RoleVO">
+        select r.ID as id,
+        IFNULL(r.comments, "") as comments,
+        r.role_name,
+        DATE_FORMAT(r.create_time, '%Y-%m-%d %H:%i:%s') AS create_time
+        from role r
+        <where>
+            <if test="roleName != null and roleName != ''">
+                r.role_name like concat(#{roleName},"%")
+            </if>
+        </where>
+    </select>
+</mapper>

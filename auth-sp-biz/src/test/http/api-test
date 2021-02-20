@@ -1,0 +1,61 @@
+### 用户登录
+POST http://192.168.10.10:10010/api/v1/auth/user/login
+Content-Type: application/json
+
+{
+  "mobile":"13333333333",
+  "password": "qwer1234",
+  "verifyCode": "111111"
+}
+
+### token_refresh
+POST http://192.168.10.10:10010/api/v1/auth/refreshToken
+Content-Type: application/json
+
+{
+  "refreshToken":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODk0ODIzNzcsInVzZXJfbmFtZSI6IjIiLCJqdGkiOiI4ZGZjNDU2Ny1kNmI1LTRmOTUtOWIwYi1mMWYzOGIwOGQ0MTQiLCJjbGllbnRfaWQiOiJjbGllbnRfaWQiLCJzY29wZSI6WyJhbGwiXSwiYXRpIjoiNGM0ZTFlY2YtMmEyZS00ODExLTg5YjctOTk4ZmU4OGFkMzdkIn0.cXYa1NwcfpCPI3BRr-xU5gCZgISHlDMp7dPFg1nF-a4F1HL7yukcnwDmmI_86iN75O_yOLPrYrnStakU507HzSVeq7XjMWGGqzStEUK43j9wmMRCLrVuh3_TJAH0KxsEiiMdRh0Ftgd9n1GiB_sEXJLUUKYN4c2zunu_VTKl6xmYwdOkJVRIuxxGCv3Ht192Y1DtG8lCW7BYodL2NPe7CDb72HY1S0O8CmykkY4lRQnfjsT_fQjOxP9zzMIJD9P_HssaVXK1W9Ud0FOM5u7twnJz4faeUojbipoN7qtORFQLJW5-mGO76RL1DkgwX_0NBvi2AoTFR5FVUKT2022uKw"
+}
+
+
+
+
+### 添加菜单
+POST http://192.168.10.10:10010/api/v1/auth/authority
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODkzOTcyNzEsInVzZXJfbmFtZSI6IjIiLCJqdGkiOiI3NWE4ZTM0Mi1iMmE4LTQxMmItYjc0YS00OTY5ZGJmZjZhMjQiLCJjbGllbnRfaWQiOiJjbGllbnRfaWQiLCJzY29wZSI6WyJhbGwiXX0.hOFXiDYzZHGSuJB0hVEvIngNkX_MQ3i4bPLtyck_cOecSMT_7bscJ_svp-ESDbGilNeeA2IYLI_SwCGBE97h5dKoKaVFuhEmNdIRQhPP8qn8ph0Ac3IQZ3PID2tSAT9XXtxIkknVOoKqX1FN6GToD59-zBhKAi2FVCiNwmMyR-7xRbgIHI5zUR818_hCPbeAiFtbNytCsfhRniNWiRft0VAsZw-RjDbITfLqvxv96wxq8GmwdjGo9BQiEwhQY4pOIcgnciUcx3_p_pUkv0ZfEuIOX59H9W9YrOlQgMqVVRAG68w-tXz8WJeqnDqS5S5dm2BoTVk1pCJufmVB9sCnow
+
+{
+  "parentID": 5,
+  "routerName": "/individualDemander/detail",
+  "name": "详情",
+  "icon": "",
+  "permission": "individualDemander:detail",
+  "type": 2,
+  "sort": 0
+}
+### 修改菜单
+PUT http://192.168.10.10:10010/api/v1/auth/authority/37
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODk0NjA1ODAsInVzZXJfbmFtZSI6IjIiLCJqdGkiOiIyZWFjNDEzYy1lNjY1LTRjMTItOTVmMS0zNDVmMzgzMzU0NjQiLCJjbGllbnRfaWQiOiJjbGllbnRfaWQiLCJzY29wZSI6WyJhbGwiXX0.UOcTtUtLe35Ibj1LAVp9g_CJpSthRYzoFBVMW9Bj-PAImUR4aW6P7kVFSpZJS26XL1v-9hquti_3ATdMp5J680o6obVb5ETz1IqwlGXQpFNZekv4FYb9DLmVVpOD0aYmIGNucVQbWjoQiUFD60q-nSbWyT0WRokGKRYBGurelkFXUs20qeq3_r9m7MNBkTqnw95q6QZ6RNtPjsWpT1YZ1rImwXsuaGQkHzETljBj4RRK6J8qu9jEOgm6Y5L0pj0Pr9YEXgID9WH5Bj0bpdXotg_H9Th8GPhtS4BD4VBBrGHqaHyc2L-LAHBs_Z2i0EJHJRwPBgCCWFJLB9QNE1s2Ng
+
+{
+  "parentID": 5,
+  "routerName": "/individualDemander/details",
+  "name": "详情",
+  "icon": "icon",
+  "permission": "individualDemander:detail:id",
+  "type": 1,
+  "sort": 1
+}
+
+### 菜单详情
+GET http://192.168.10.10:10010/api/v1/auth/authority/37
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJhbGwiXSwiZXhwIjoxNTkxMTA1NzIxLCJqdGkiOiIwMmI5ZWQ3Mi05MDE2LTQ0YjQtOGVjYS0yMGNmYjRkN2QzNjMiLCJjbGllbnRfaWQiOiJjbGllbnRfaWQifQ.JLO-YIa3jnM6E_Ki5OgX16KxgcPkz0Iq1w3nf0vBZg966pygRg7lqk0i0gwuxcxUaX2-pogzEhL5MDIEV9YDM9IGHjbvP_5V1U5IwPWHDqnEtST-UR8Wq-CRi8Zgcc_pOiBooNyUhFiFJj1A0ahSTGANsCgGfNagJUSzoHtI9Zz2XkcN6W9LsMj2wJqIbDjfY9aTvAbvCA6NczOAEPeSgVlzd0BF5v3b41EUQOJkdSMGOi2qqbd2VlMgP_6JCBkF5XL6zEP47G1NKWW5HxENwDJF_-37nt7u_LnFq_HFz2c6CnDiTC4kqld5wrbml2JBOIg5xZLyN_S6kjajQWSnDw
+
+### 菜单列表树结构
+GET http://192.168.10.10:10010/api/v1/auth/authority/tree
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODkzOTcyNzEsInVzZXJfbmFtZSI6IjIiLCJqdGkiOiI3NWE4ZTM0Mi1iMmE4LTQxMmItYjc0YS00OTY5ZGJmZjZhMjQiLCJjbGllbnRfaWQiOiJjbGllbnRfaWQiLCJzY29wZSI6WyJhbGwiXX0.hOFXiDYzZHGSuJB0hVEvIngNkX_MQ3i4bPLtyck_cOecSMT_7bscJ_svp-ESDbGilNeeA2IYLI_SwCGBE97h5dKoKaVFuhEmNdIRQhPP8qn8ph0Ac3IQZ3PID2tSAT9XXtxIkknVOoKqX1FN6GToD59-zBhKAi2FVCiNwmMyR-7xRbgIHI5zUR818_hCPbeAiFtbNytCsfhRniNWiRft0VAsZw-RjDbITfLqvxv96wxq8GmwdjGo9BQiEwhQY4pOIcgnciUcx3_p_pUkv0ZfEuIOX59H9W9YrOlQgMqVVRAG68w-tXz8WJeqnDqS5S5dm2BoTVk1pCJufmVB9sCnow
+
+###  menu siderbar
+GET http://192.168.10.10:10010/api/v1/auth/user/2/sidebar
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTExMzc1NDQsInVzZXJfbmFtZSI6IjIiLCJqdGkiOiIwZWJkYzYzMi1iOTEzLTQxNzUtYTYwNi04OTI2ZTkxMjdiMGMiLCJjbGllbnRfaWQiOiJjbGllbnRfaWQiLCJzY29wZSI6WyJhbGwiXX0.mycsNGu_vCnVwsA1w8Xf8MxVO6RxvoF08p2ZhLkmbGU-gEXquVR65Tx25Ykbup3hTELN2sGDAiTkOkg8XtkHKf9zxF6bKyjqOILn15MxmH22QR1e_L1CptzvwnpIO46DCWWfyod_F4vaEGBc9jT5--fVKodsRehKgKW5K0scacfx3VW8O8eff2A1hY8oeu7JYenq7eHQPg0hWKZIMPcXgbGeRnLU2IyRNSvxfu4vjLvQsNOS-vvSCpC8_MxyC64bgm3K8kCLPylBcOWvGSqA42VpqPzyn9513JzbL_TAkSQiku9w-xWj2kQX_kxJKY5ql-gjqwYOsziClN2weHlBZQ

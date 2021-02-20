@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nvxclouds.auth.biz.mapper.AuthorityMapper">
+
+    <select id="selectAuthorityByRoleID" resultType="com.nvxclouds.auth.biz.domain.Authority">
+        SELECT a.* FROM authority a LEFT JOIN role_authority ra ON a.ID = ra.authority_ID WHERE ra.role_ID = #{roleID}
+        ORDER BY a.tree_sort
+    </select>
+    <select id="selectByUserID" resultType="com.nvxclouds.auth.biz.domain.Authority">
+        SELECT a.* FROM authority a LEFT JOIN role_authority ra ON a.ID = ra.authority_ID
+        LEFT JOIN user_role ur ON ra.role_ID = ur.role_ID
+        WHERE ur.user_ID = #{userID}
+        ORDER BY a.tree_sort
+    </select>
+    <select id="selectPermissionByUserID" resultType="java.lang.String">
+        SELECT a.permission as permissions
+        FROM authority a
+                 LEFT JOIN role_authority ra on a.ID = ra.authority_ID
+                 LEFT JOIN user_role ur on ra.role_ID = ur.role_ID
+        WHERE ur.user_ID = #{userId}
+        AND a.permission IS NOT NULL
+        AND LENGTH(TRIM(a.permission)) > 0
+    </select>
+</mapper>

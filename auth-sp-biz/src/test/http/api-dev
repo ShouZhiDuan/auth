@@ -1,0 +1,125 @@
+# curl --location --request POST 'http://localhost:10210/refreshToken'
+#--form 'refreshToken=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTIwMzY0MzgsInVzZXJfbmFtZSI6IjIiLCJqdGkiOiIxNzBmNzEwNC01YTBhLTRjOGMtOTMwNy00MjI1MDU5ZTdkMzEiLCJjbGllbnRfaWQiOiJjbGllbnRfaWQiLCJzY29wZSI6WyJhbGwiXSwiYXRpIjoiMjE2NTVkZTAtNWJlNi00Yjk2LWJiYTAtYjQ2OTg5NTM4NWY5In0.E8vpkxrpH6Y4XLCzlxxk7_rrrjLZh703jtJTwqwEul_O0ZB9mwSxS9emnYYfhg1fXlBayF0nUpIDuPQtXDoTlstEsEFaBvZCdJYkcX_om8LBeGrlF-CCRzQ8x_b1sg2VAtzNcn2iVvTk6ADN6HhciTniEqiY6XaOCIIDbMU44P-g31p6Ru4BEQ14kcCp9bHSvLvm2UiN6Nk7Qk0xXePcg0sq7CUO1I3c-RwO12kzbOnvGa8304OsrC-ARIqftzBT9rP_v0gl5cDB5B9gCOI6B0Z0KTIpnDxtup_UiucvOqFkwZc98eKiZS2kNaoD19VKCn1eYrXC9_FqTaWGgUrjMA'
+POST http://localhost:10210/refreshToken
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="refreshToken"
+
+eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTIwMzY0MzgsInVzZXJfbmFtZSI6IjIiLCJqdGkiOiIxNzBmNzEwNC01YTBhLTRjOGMtOTMwNy00MjI1MDU5ZTdkMzEiLCJjbGllbnRfaWQiOiJjbGllbnRfaWQiLCJzY29wZSI6WyJhbGwiXSwiYXRpIjoiMjE2NTVkZTAtNWJlNi00Yjk2LWJiYTAtYjQ2OTg5NTM4NWY5In0.E8vpkxrpH6Y4XLCzlxxk7_rrrjLZh703jtJTwqwEul_O0ZB9mwSxS9emnYYfhg1fXlBayF0nUpIDuPQtXDoTlstEsEFaBvZCdJYkcX_om8LBeGrlF-CCRzQ8x_b1sg2VAtzNcn2iVvTk6ADN6HhciTniEqiY6XaOCIIDbMU44P-g31p6Ru4BEQ14kcCp9bHSvLvm2UiN6Nk7Qk0xXePcg0sq7CUO1I3c-RwO12kzbOnvGa8304OsrC-ARIqftzBT9rP_v0gl5cDB5B9gCOI6B0Z0KTIpnDxtup_UiucvOqFkwZc98eKiZS2kNaoD19VKCn1eYrXC9_FqTaWGgUrjMA
+--WebAppBoundary--
+
+###
+
+# curl --location --request POST 'http://localhost:10210/oauth/token'
+#--header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODkyNjIwNjAsInVzZXJfbmFtZSI6IjIiLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6IjBjMjZhZGI4LTMwYzktNGYxNy04MzgyLTMxODkzZTBkNTVkOCIsImNsaWVudF9pZCI6ImNsaWVudF9pZCIsInNjb3BlIjpbImFsbCJdfQ.DNl2mS0N0wI-DIuj_tHaHxvmgcTbC8cLBB0ejFFrWjRaYgGiU67WriGAOrtjNEAM3nFxWRmX2brsCrvhyH5Vuw8TnDrvIxAiq6fmDVNuPCcNlLAewhXCI-12N4WyfI80H7CStgKXrNEJJGHPDGO5uKh579KKi7foRWkxv-oyk8zXIfLOHpXP8y_-xw7ayr51ATwCAkAIujy3qoqdaOehTIgwtfBXaFTr6pjAsnaLMBR7ERqluTRI82kTGqbS5stQ_UNmdi8a3SGEmhijDOYdmoKn0GTlD3rMSKSM1Ia1c__AYiNtRQE0raftDT5RLq6Pix3f9Xxsn9jNbSx1JsepQA'
+#--header 'Content-Type: application/x-www-form-urlencoded'
+#--data-urlencode 'grant_type=password'
+#--data-urlencode 'client_id=client_id'
+#--data-urlencode 'client_secret=secret'
+#--data-urlencode 'username=2'
+#--data-urlencode 'password=1088da4796b19a17484ae6d019bbf77d'
+POST http://192.168.10.10:1000/api/v1/auth/oauth/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials&client_id=client_id&client_secret=secret&username=2
+
+###
+
+# curl -i -X POST  -u 'demoApp:demoAppSecret' -d 'grant_type=refresh_token&refresh_token=95844d87-f06e-4a4e-b76c-f16c5329e287' http://localhost:8080/oauth/token
+POST http://localhost:10210/oauth/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=refresh_token&client_id=client_id&client_secret=secret&refresh_token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTIwNjU3MzIsInVzZXJfbmFtZSI6IjIiLCJqdGkiOiIxNzMyNjdhMi1iOWUxLTQwNjUtYjIwMS0wZTBiOWRhMWJmN2EiLCJjbGllbnRfaWQiOiJjbGllbnRfaWQiLCJzY29wZSI6WyJhbGwiXSwiYXRpIjoiYmRiM2Q0MTAtYjU1ZS00MGQ5LWI2OWYtYjJlNzg1ZGMyOWJjIn0.TVl3d1X3DeGtPtxDpZqrJk7mZ1fKBtBt-oCefeiNVZn-UeMJx2ELawhBIFcdOgRBhvWBL8RMTcdrT2vc4MHEJ1QOZHK5mLAYq4fKwxxTJttLv1X3SxpMy3F1MFdwYe6oeUu90LY3Cp36SEcZ0ZE54qums_ZIeL_R_oUpraf17VCAS5MSxKtf0mqXXSJfoC7D6sTYR3pYSFMOoThMwdRzGxI89i_P53oeMyfsWonoDUDDR58LqHSRyWhp5H5Tv582tPSZbl0iij2eQTsUxisVyo2l60UEXT0w2ao9DIqar0T11HK9_uGqHnY1oy5s1Oaeh8Ij16BYhJjHWPSSHtcWUw
+
+### user_login
+POST http://localhost:10010/api/v1/auth/user/login
+#POST http://localhost:10210/user/login
+Content-Type: application/json
+
+{
+  "mobile": "13333333333",
+  "password": "qwer1234",
+  "verifyCode": "111111"
+}
+
+
+
+### token_refresh
+POST http://localhost:10210/refreshToken
+Content-Type: application/json
+
+{
+  "refreshToken":"yJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTIwNDc2MTAsInVzZXJfbmFtZSI6IjIiLCJqdGkiOiJiYWYwODQ4Mi02ZDg5LTRhZDMtODI1ZS03NDk4MjUwMTk2ZjgiLCJjbGllbnRfaWQiOiJjbGllbnRfaWQiLCJzY29wZSI6WyJhbGwiXSwiYXRpIjoiYjRmNzU0ODUtMTJmNy00NDgwLTkwMWItNzczZTEzMmJjZjBiIn0.nMuLPn7OgPRyT1m4NyEH4oXuOncQECkVcaz4to4FQnrAthFzS9IZaiF_DT7espjXhbXHgNLIQe1Dbo_WOMxfM4ABAQY-QQlio00lTBDyomF80ROATRJiuMd4Z_3Z9dZ7aVqcyRU37uM3J-LxHyfUcNMIJ_E-n56fJ9RWF7ekZDjlfwDDn7rkjA9mxNizb72RtWvH2aBLaahm620o7TxKDwCMqmFgIvvUJWZThUEmAvOU6aQhCWK_8rbC51wZ9oFtICfzi-WPVeh5CYm0_k-ydePJuhTlGSZgzvt4iQemZ9FHQfKYzAFAJdj_uq_k8ugkBeFRhBRWnGU9A2t1i6DTgQ"
+}
+
+### 添加菜单
+POST http://192.168.50.222:10210/authority
+Content-Type: application/json
+
+{
+  "parentID": 5,
+  "routerName": "/individualDemander/detail",
+  "name": "详情",
+  "icon": "",
+  "permission": "individualDemander:detail",
+  "type": 2,
+  "sort": 0
+}
+
+### 修改菜单
+PUT http://192.168.50.222:10210/authority/35
+Content-Type: application/json
+
+{
+  "parentID": 5,
+  "routerName": "/individualDemander/details",
+  "name": "详情查看",
+  "icon": "icon",
+  "permission": "individualDemander:detail:id",
+  "type": 1,
+  "sort": 1
+}
+
+### 菜单详情
+GET http://192.168.50.222:10210/authority
+
+### 菜单详情
+GET http://192.168.50.222:10210/authority/0
+
+### 菜单删除
+DELETE http://192.168.50.222:10210/authority/35
+
+### 菜单列表树结构
+GET http://192.168.50.222:10210/authority/tree
+
+
+### update role
+PUT http://192.168.50.222:10210/role/5
+Content-Type: application/json
+
+{
+  "authorities": [[1, 2, 45], [1, 3, 49], [4, 5, 50], [4, 6, 51], [7, 8], [7, 9], [7, 10], [11, 12, 52], [11, 13], [14, 15, 53], [14, 15, 54], [14, 16, 55], [14, 16, 56], [14, 17, 57], [14, 17, 58], [18, 19], [18, 20], [21, 22, 27], [21, 22, 28], [21, 22, 29], [21, 22, 63], [21, 23, 59], [21, 23, 60], [21, 23, 61], [21, 23, 62], [24, 25], [24, 26], [24, 40, 64], [24, 40, 65],[24, 40, 66]],
+  "comments": "",
+  "roleName": "管理员"
+}
+
+### role all authority
+GET http://192.168.50.222:10210/role/5/authority
+
+### role detail
+GET http://192.168.50.222:10210/role/5
+
+
+###  menu siderbar
+GET http://192.168.50.222:10210/user/2/sidebar
+#GET http://192.168.10.10:10010/api/v1/auth/user/2/sidebar
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODk0NTU2MjAsInVzZXJfbmFtZSI6IjIiLCJqdGkiOiJiNGY3NTQ4NS0xMmY3LTQ0ODAtOTAxYi03NzNlMTMyYmNmMGIiLCJjbGllbnRfaWQiOiJjbGllbnRfaWQiLCJzY29wZSI6WyJhbGwiXX0.g8dYYi8LKZUJT532Mi-4bSXkmzba6EBmGJ0RjfI1Uvq9Jwi5YGV0LNlkQ3z1NN9erT8u1VaZG2Sfjs0gBn_2ZwMJ287g7NRRUTnDYLPrV4-6mwp0t55NXJxqUDJ1NvjrowoQ690Rldb83jYl_BW10mu-XnBxCeJeN_I4Fj8rjg3uUBYdlDaAKlRRm-tpmbxtKs-oIQhjm6dwLjLJR_SnInQdSLrEP-C89Kh9mzQiadqaQ_BCMZ1_QMUCq7XUEvnhF-2ebIM7F9HzENxNKdxr3dhoeFlPFkZD4hTD3xfl_N6YXVvOAOzIyQAoW-DSXYrhHQbHSha8vjViTopKnDarYg
+
+
+### role by page
+GET http://192.168.50.222:10210/role?roleName=管
+
+
+### query user by page
+GET http://192.168.50.222:10210/user?userName=
